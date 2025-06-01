@@ -1,0 +1,323 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.categories {
+    position: relative;
+    font-size: 16px;
+}
+
+.categories span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    user-select: none;
+}
+
+.categories span::after {
+    content: "▼";
+    margin-left: 5px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.categories:hover span {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.categories:hover span::after {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.categories:hover .dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown li a:hover {
+    background-color: #f0f0f0;
+    color: #4CAF50;
+}
+
+.search-form {
+    margin: 0 20px;
+}
+
+.search-form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.widgets {
+    display: flex;
+    gap: 10px;
+}
+
+.widgets a {
+    margin-left: 10px;
+}
+
+.widgets img {
+    vertical-align: middle;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 стовпчики */
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    opacity: 0; /* Початкова невидимість */
+    height: 300px; /* Фіксована висота для стабільності */
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product.visible {
+    opacity: 1; /* Показуємо, коли в зоні видимості */
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+#cart, #favorites {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+}
+
+#cart-items, #favorites-list, #checkout-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#total-price, #checkout-total {
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#checkout {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    display: none;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+#user-profile.user-profile {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#user-photo.profile-photo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+logout-button {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .categories {
+        width: 100%;
+    }
+
+    .categories span {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dropdown {
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .search-form {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search-form input {
+        width: 100%;
+    }
+
+    .widgets {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .user-profile {
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #user-profile.user-profile {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    #user-photo.profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logout-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}

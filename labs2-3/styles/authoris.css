@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    min-height: 100vh; /* Забезпечує, що сторінка займає всю висоту */
+    display: flex;
+    flex-direction: column; /* Вирівнюємо елементи у колонку */
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    text-align: center; /* Центруємо логотип */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+}
+
+main {
+    width: 100%;
+    max-width: 600px;
+    flex: 1; /* Main займає весь доступний простір між header і footer */
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+#register, #login {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#register h2, #login h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="file"] {
+    padding: 5px;
+}
+
+#photo-preview {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#admin-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#admin-login:hover {
+    background-color: #f57c00;
+}
+
+p {
+    margin-top: 15px;
+    color: #666;
+}
+
+p a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; /* Футер завжди внизу */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #666;
+}
+
+/* Адаптивність */
+@media (max-width: 480px) {
+    #register, #login {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    #register h2, #login h2 {
+        font-size: 20px;
+    }
+
+    button, #admin-login {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    header, footer {
+        padding: 8px;
+    }
+}

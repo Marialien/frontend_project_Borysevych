@@ -1,0 +1,130 @@
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    min-height: 200px; /* Додаємо мінімальну висоту, щоб контейнер був видимий */
+    visibility: visible; /* Переконуємося, що контейнер видимий */
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff; /* Додаємо фон для видимості */
+    opacity: 1; /* Переконуємося, що картка не прихована */
+    visibility: visible; /* Переконуємося, що картка видима */
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.remove-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: #d32f2f;
+}
+
+.product.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button.confirm {
+    background-color: #f44336;
+    color: white;
+}
+
+.modal-button.confirm:hover {
+    background-color: #d32f2f;
+}
+
+.modal-button.cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+.modal-button.cancel:hover {
+    background-color: #bbb;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 15px;
+        max-width: 300px;
+    }
+
+    .modal-content p {
+        font-size: 14px;
+    }
+
+    .modal-button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}

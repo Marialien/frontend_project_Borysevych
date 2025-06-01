@@ -1,0 +1,414 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Забезпечує, що сторінка займає всю висоту */
+    display: flex;
+    flex-direction: column; /* Вирівнюємо елементи у колонку */
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.categories {
+    position: relative;
+    font-size: 16px;
+}
+
+.categories span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    user-select: none;
+}
+
+.categories span::after {
+    content: "▼";
+    margin-left: 5px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.categories:hover span {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.categories:hover span::after {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.categories:hover .dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown li a:hover {
+    background-color: #f0f0f0;
+    color: #4CAF50;
+}
+
+.search-form {
+    margin: 0 20px;
+}
+
+.search-form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.widgets a {
+    margin-left: 10px;
+}
+
+.widgets img {
+    vertical-align: middle;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Фіксуємо 3 стовпці */
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.product.visible {
+    opacity: 1;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.add-to-cart, .add-to-favorites {
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.add-to-favorites {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.add-to-favorites:hover {
+    background-color: #e64444;
+}
+
+#cart, #favorites, #checkout, #admin {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+}
+
+#cart-items, #favorites-list, #checkout-items, #product-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#total-price, #checkout-total {
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#checkout {
+    display: none;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Стилі для модального вікна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button.confirm {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-button.confirm:hover {
+    background-color: #45a049;
+}
+
+.modal-button.cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+.modal-button.cancel:hover {
+    background-color: #bbb;
+}
+
+/* Стилі для адмін-панелі */
+#admin form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 10px;
+}
+
+#admin label {
+    font-weight: bold;
+}
+
+#admin input, #admin select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#admin #product-list div {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+main {
+    flex: 1; /* Main займає весь доступний простір між header і footer */
+}
+
+/* Стилі для іконок у widgets */
+.widgets {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Відстань між іконками */
+}
+
+.widgets a {
+    margin-left: 0; /* Видаляємо старий margin-left */
+    transition: transform 0.2s ease; /* Плавний ефект при наведенні */
+}
+
+.widgets a:hover {
+    transform: scale(1.1); /* Збільшення при наведенні */
+}
+
+.widget-icon {
+    width: 30px; /* Фіксована ширина іконок */
+    height: 30px; /* Фіксована висота іконок */
+    object-fit: contain; /* Зберігаємо пропорції */
+    vertical-align: middle;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; /* Футер завжди внизу */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .categories {
+        width: 100%;
+    }
+
+    .categories span {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dropdown {
+        width: 100%;
+        position: static;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .search-form {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search-form input {
+        width: 100%;
+    }
+
+    .widgets {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+    .widget-icon {
+        width: 25px; /* Зменшуємо розмір іконок */
+        height: 25px;
+    }
+
+    .user-profile {
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .modal-content {
+        padding: 15px;
+        max-width: 300px;
+    }
+
+    .modal-content p {
+        font-size: 14px;
+    }
+
+    .modal-button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    #admin form {
+        max-width: 100%;
+    }
+}
