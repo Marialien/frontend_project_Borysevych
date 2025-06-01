@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль - Зоомагазин "Лапки"</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/profile.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Логотип зоомагазину Лапки" class="logo">
+        <nav>
+            <div class="categories">
+                <span role="button" aria-label="Відкрити категорії">Категорії</span>
+                <ul class="dropdown">
+                    <li><a href="main.html">Товари для котів</a></li>
+                    <li><a href="main.html">Товари для собак</a></li>
+                    <li><a href="main.html">Товари для птахів</a></li>
+                </ul>
+            </div>
+            <form class="search-form">
+                <label for="search" class="visually-hidden">Пошук товарів</label>
+                <input type="search" id="search" placeholder="Пошук товарів" disabled>
+            </form>
+            <div class="widgets">
+                <a href="cart.html" class="widget">Кошик</a>
+                <a href="favourite.html" class="widget">Обране</a>
+                <a href="tel:+380123456789" class="widget">Гаряча лінія</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="user-profile" class="profile-card">
+            <h2 class="profile-title">Мій профіль</h2>
+            <div class="profile-content">
+                <img id="user-photo" src="" alt="Фото користувача" class="profile-photo">
+                <div id="user-info" class="profile-details">
+                    <p><strong>Логін:</strong> <span id="username"></span></p>
+                    <p><strong>ПІБ:</strong> <span id="full-name"></span></p>
+                    <p><strong>Телефон:</strong> <span id="phone"></span></p>
+                    <p><strong>Email:</strong> <span id="email"></span></p>
+                    <p><strong>Адреса:</strong> <span id="address"></span></p>
+                </div>
+            </div>
+            <button onclick="logoutUser()" class="logout-button">Вийти</button>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Зоомагазин "Лапки"</p>
+    </footer>
+    <script src="JScript/login.js"></script>
+    <script src="JScript/jscode.js"></script>
+    <script src="JScript/profile.js"></script>
+</body>
+</html>

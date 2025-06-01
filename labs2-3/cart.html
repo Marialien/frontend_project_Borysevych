@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик - Зоомагазин "Лапки"</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Логотип зоомагазину Лапки" class="logo">
+        <nav>
+            <div class="categories">
+                <span role="button" aria-label="Відкрити категорії">Категорії</span>
+                <ul class="dropdown">
+                    <li><a href="main.html">Товари для котів</a></li>
+                    <li><a href="main.html">Товари для собак</a></li>
+                    <li><a href="main.html">Товари для птахів</a></li>
+                </ul>
+            </div>
+            <form class="search-form">
+                <label for="search" class="visually-hidden">Пошук товарів</label>
+                <input type="search" id="search" placeholder="Пошук товарів" disabled>
+            </form>
+            <div class="widgets">
+                <a href="favorites.html" class="widget">Обране</a>
+                <a href="profile.html" class="widget">Профіль</a>
+                <a href="tel:+380123456789" class="widget">Гаряча лінія</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="cart">
+            <h2>Кошик</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price">Загальна сума: 0 грн</p>
+            <button onclick="checkout()">Оформити замовлення</button>
+        </section>
+        <section id="checkout">
+            <h2>Оформлення замовлення</h2>
+            <ul id="checkout-items"></ul>
+            <p id="checkout-total">Загальна сума: 0 грн</p>
+            <button onclick="initiateSaveOrder()">Зберегти замовлення</button>
+            <button onclick="cancelCheckout()">Скасувати</button>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Зоомагазин "Лапки"</p>
+    </footer>
+    <!-- Модальне вікно для підтвердження завантаження чеку -->
+    <div id="download-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p>Чи бажаєте завантажити чек замовлення?</p>
+            <button id="download-yes" class="modal-button confirm">Так</button>
+            <button id="download-no" class="modal-button cancel">Ні</button>
+        </div>
+    </div>
+    <script src="JScript/login.js"></script>
+    <script src="JScript/jscode.js"></script>
+</body>
+</html>
